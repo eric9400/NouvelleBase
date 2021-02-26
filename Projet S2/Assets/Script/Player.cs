@@ -21,6 +21,12 @@ public class Player : Photon.MonoBehaviour
         if (photonView.isMine)
         {
             PlayerCamera.SetActive(true);
+            PlayerNameText.text = PhotonNetwork.playerName;
+        }
+        else
+        {
+            PlayerNameText.text = photonView.owner.NickName;
+            PlayerCamera.SetActive(false);
         }
     }
 
@@ -39,12 +45,33 @@ public class Player : Photon.MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            sr.flipX = true;
+            photonView.RPC("FlipTrue", PhotonTargets.AllBuffered);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            sr.flipX = false;
+            photonView.RPC("FlipFalse", PhotonTargets.AllBuffered);
         }
+
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.D))
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
+    }
+
+    [PunRPC]
+    private void FlipTrue()
+    {
+        sr.flipX = true;
+    }
+
+    [PunRPC]
+    private void FlipFalse()
+    {
+        sr.flipX = false;
     }
 }

@@ -17,7 +17,10 @@ public class LevelController : MonoBehaviour
     public void Level1()
     {
         if (PhotonNetwork.isMasterClient)
+        {
             PhotonNetwork.LoadLevel("Level1");
+        }
+
     }
 
 }
