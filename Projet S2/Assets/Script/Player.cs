@@ -12,9 +12,22 @@ public class Player : Photon.MonoBehaviour
     public SpriteRenderer sr;
     public Text PlayerNameText;
 
-    public bool IsGrounded = false;
+    public bool IsGrounded;
     public float MoveSpeed;
     public float JumpForce;
+
+    public Transform playerPos;
+    public float positionRadius;
+    public LayerMask ground;
+
+    private float jumpTimeCounter;
+    public float jumpTime;
+    private bool isJumping;
+
+    void Start()
+    {
+        isJumping = false;
+    }
 
     private void Awake()
     {
@@ -32,9 +45,30 @@ public class Player : Photon.MonoBehaviour
 
     private void Update()
     {
+        IsGrounded = Physics2D.OverlapCircle(playerPos.position, positionRadius, ground);
         if(photonView.isMine)
         {
             CheckInput();
+            Jump();
+
+        }
+    }
+
+    void FixedUpdate()
+    {
+        IsGrounded = Physics2D.OverlapCircle(playerPos.position, positionRadius, ground);
+        if(photonView.isMine)
+        {
+            Jump();
+        }
+    }
+
+    private void Jump()
+    {   
+        if (Input.GetButtonDown("Jump") && Mathf.Abs(rb.velocity.y) < 0.001)
+        {
+            rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
+            
         }
     }
 

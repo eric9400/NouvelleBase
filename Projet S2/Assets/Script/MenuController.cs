@@ -9,11 +9,17 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject UsernameMenu;
     [SerializeField] private GameObject ConnectPanel;
 
+    [SerializeField] private GameObject MenuDebut;
+    [SerializeField] private GameObject MenuResolution;
+
+
     [SerializeField] private InputField UsernameInput;
     [SerializeField] private InputField CreateGameInput;
     [SerializeField] private InputField JoinGameInput;
 
     [SerializeField] private GameObject StartButton;
+
+
 
     private void Awake()
     {
@@ -22,8 +28,9 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        UsernameMenu.SetActive(true);
+        Screen.SetResolution(Screen.width, Screen.height, false);
         PhotonNetwork.automaticallySyncScene = true;
+
     }
 
     private void OnConnectedToMaster()
@@ -67,4 +74,52 @@ public class MenuController : MonoBehaviour
         if (PhotonNetwork.isMasterClient)
             PhotonNetwork.LoadLevel("LevelChoice");
     }
+
+    public void PlayButton()
+    {
+        MenuDebut.SetActive(false);
+        MenuResolution.SetActive(false);
+    }
+
+
+    public void ResolutionButton()
+    {
+        MenuDebut.SetActive(false);
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
+    public void ResolutionMin()
+    {
+        ChangeResolution(640,480);
+    }
+
+    public void ResolutionMiddle()
+    {
+        ChangeResolution(1280,800);
+    }
+
+    public void ResolutionMax()
+    {
+        ChangeResolution(1920,1080);
+    }
+
+    public void ChangeFullscreen()
+    {
+        Screen.SetResolution(Screen.width, Screen.height, !Screen.fullScreen);
+    }
+
+    private void ChangeResolution(int _width, int _height)
+    {
+        Screen.SetResolution(_width, _height, Screen.fullScreen);
+    }
+
+    public void BackToMenu()
+    {
+        MenuDebut.SetActive(true);
+    }
+
 }

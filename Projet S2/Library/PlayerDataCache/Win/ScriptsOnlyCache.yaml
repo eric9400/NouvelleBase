@@ -1,12 +1,17 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp-Editor.dll:
+    - PhotonAnimatorViewEditor
+    - PhotonRigidbody2DViewEditor
+    - PhotonTransformViewEditor
+    - PhotonViewInspector
     - PunSceneSettings
     Assembly-CSharp.dll:
     - AudioRpc
     - ClickAndDrag
     - ClickDetector
     - ColorPerPlayerApply
+    - Destroyfeed
     - ExitGames.Demos.DemoAnimator.CameraWork
     - ExitGames.Demos.DemoAnimator.PlayerAnimatorManager
     - ExitGames.Demos.DemoAnimator.PlayerManager
@@ -51,12 +56,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -67,11 +66,13 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.GridLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
   sceneClasses:
     Assets/Scenes/Level1.unity:
     - Class: 1
@@ -113,6 +114,10 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11684}
     - Class: 114
+      Script: {instanceID: 11792}
+    - Class: 114
+      Script: {instanceID: 12246}
+    - Class: 114
       Script: {instanceID: 12412}
     - Class: 114
       Script: {instanceID: 12684}
@@ -121,11 +126,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12998}
     - Class: 114
-      Script: {instanceID: 14026}
+      Script: {instanceID: 13808}
     - Class: 114
-      Script: {instanceID: 14580}
+      Script: {instanceID: 14028}
     - Class: 114
-      Script: {instanceID: 14704}
+      Script: {instanceID: 14582}
+    - Class: 114
+      Script: {instanceID: 14706}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -199,9 +206,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12412}
     - Class: 114
-      Script: {instanceID: 14026}
+      Script: {instanceID: 14028}
     - Class: 114
-      Script: {instanceID: 14704}
+      Script: {instanceID: 14706}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -332,33 +339,37 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13796}
     - Class: 114
-      Script: {instanceID: 13812}
+      Script: {instanceID: 13808}
     - Class: 114
-      Script: {instanceID: 13832}
+      Script: {instanceID: 13814}
     - Class: 114
-      Script: {instanceID: 13934}
+      Script: {instanceID: 13834}
     - Class: 114
-      Script: {instanceID: 14012}
+      Script: {instanceID: 13936}
     - Class: 114
-      Script: {instanceID: 14026}
+      Script: {instanceID: 14014}
     - Class: 114
-      Script: {instanceID: 14052}
+      Script: {instanceID: 14028}
     - Class: 114
-      Script: {instanceID: 14090}
+      Script: {instanceID: 14054}
     - Class: 114
-      Script: {instanceID: 14358}
+      Script: {instanceID: 14092}
     - Class: 114
-      Script: {instanceID: 14390}
+      Script: {instanceID: 14360}
     - Class: 114
-      Script: {instanceID: 14472}
+      Script: {instanceID: 14392}
     - Class: 114
-      Script: {instanceID: 14490}
+      Script: {instanceID: 14474}
     - Class: 114
-      Script: {instanceID: 14580}
+      Script: {instanceID: 14492}
     - Class: 114
-      Script: {instanceID: 14704}
+      Script: {instanceID: 14582}
     - Class: 114
-      Script: {instanceID: 14770}
+      Script: {instanceID: 14706}
+    - Class: 114
+      Script: {instanceID: 14726}
+    - Class: 114
+      Script: {instanceID: 14772}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -908,7 +919,7 @@ ScriptsOnlyBuild:
     className: myThirdPersonController
   - hash:
       serializedVersion: 2
-      Hash: bf4e7958377fa106ada0860aebe71824
+      Hash: 86de19ab11143b357e0157b1c4000662
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -920,7 +931,7 @@ ScriptsOnlyBuild:
     className: MoveCam
   - hash:
       serializedVersion: 2
-      Hash: eb4339ef6ab5a1bcb32409abf5dd0457
+      Hash: 1e32d13264108f8cc917026d809f1340
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -1016,7 +1027,7 @@ ScriptsOnlyBuild:
     className: PhotonTransformView
   - hash:
       serializedVersion: 2
-      Hash: eda7783813d7b2af6c54a867c9af4dc6
+      Hash: 599aed5c50608b8ace0674edad176aa9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MenuController
@@ -1212,6 +1223,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: ExitGames.Demos.DemoAnimator
     className: CameraWork
+  - hash:
+      serializedVersion: 2
+      Hash: 74dcf3dc79e1f4d221742f0ce4ce1396
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Destroyfeed
   - hash:
       serializedVersion: 2
       Hash: 9830869511eeb4e35433654ae917b598
