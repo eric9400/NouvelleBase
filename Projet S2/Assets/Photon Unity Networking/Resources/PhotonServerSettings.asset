@@ -45,5 +45,4 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - TaggedPlayer
-  - Jump
   DisableAutoOpenWizard: 1
